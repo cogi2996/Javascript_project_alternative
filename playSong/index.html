@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    
+
     <div class="wrap-body">
         <div class="wrap-body-picture "
             style="background-image: url(https://media-public.canva.com/3ndq0/MAE4Ul3ndq0/1/s.jpg)">
@@ -35,11 +35,10 @@
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 </div>
                 <div class="progress-wrap">
-                    
-                        <input class="progress-wrap-son" type="range" value="0" step="1" min="0" max="100">
-                        <!-- <div class="progress-none"></div>
-                        <div class="progress-duration"></div> -->
-                    
+                    <div class="progress-wrap-timeStart">0:00</div>
+                    <div class="progress-wrap-timeEnd">4:00</div>
+                    <input class="progress-wrap-son" type="range" value="0" step="1" min="0" max="100">
+
                 </div>
                 <div class="body__song-control">
                     <i class="fa-solid fa-repeat"></i>
@@ -61,10 +60,16 @@
     const pause_btn = $('.body__song-control i:nth-child(4)');
     const audio = $('.audio');
     const borderProgress = $('.progress-wrap-son');
+    const timeCurrent = $('.progress-wrap-timeStart');
+    const timeDuration = $('.progress-wrap-timeEnd');
+    var seconds = 0;
+    var minute = 0;
+    audio.pause();
     play_btn.onclick = function () {
         this.classList.toggle('none');
         pause_btn.classList.toggle('none');
         audio.play();
+
     }
     pause_btn.onclick = function () {
         this.classList.toggle('none');
@@ -72,17 +77,43 @@
         audio.pause();
 
     }
+
+    // hien thi gio
+    seconds = 0;
+    minute = 0;
+    const showTimeCurrent = function () {
+
+        let CurentTime = Number(audio.currentTime);
+        if (Number.isInteger(Math.floor(Math.floor(CurentTime) / 60))) {
+            minute = Math.floor(Math.floor(CurentTime) / 60);
+        }
+        if (Number.isInteger(Math.floor(CurentTime) % 60)) {
+            seconds = Math.floor(CurentTime) % 60;
+        }
+        if (seconds < 10) {
+            timeCurrent.innerText = `${minute}:0${seconds}`;
+        }
+        else {
+            timeCurrent.innerText = `${minute}:${seconds}`;
+        }
+
+    }
     // di chuyen thanh progress
-    audio.ontimeupdate = function(e)
-    {
-        let audioPercent = Math.floor(audio.currentTime/audio.duration* 100);
+    audio.ontimeupdate = function (e) {
+        let audioPercent = Math.floor(audio.currentTime / audio.duration * 100);
         borderProgress.value = audioPercent;
+        showTimeCurrent();
+        if (audio.ended) {
+            console.log("here")
+            play_btn.classList.remove('none');
+            pause_btn.classList.add('none');
+
+        }
     }
 
     // click tua thanh progress
-    borderProgress.onchange = function(e)
-    {
-        audio.currentTime = (e.target.value)/100*audio.duration;
+    borderProgress.onchange = function (e) {
+        audio.currentTime = (e.target.value) / 100 * audio.duration;
     }
 
 </script>
