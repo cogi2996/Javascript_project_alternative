@@ -1,0 +1,153 @@
+:root{
+    --percent:0;
+    --leight:0;
+}
+body {
+    width: 100vw;
+    height: 100vh;
+    /* background-color: blue; */
+    display: flex;
+    box-sizing: border-box;
+    font-family: "Helvetica Neue",Helvetica,Arial;
+}
+
+
+.wrap-body {
+    margin: auto;
+    width: 365px;
+    height: 619px;
+    position: relative;
+    overflow:hidden;
+
+}
+
+.wrap-body-picture {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    filter: blur(2px);
+}
+
+.border__song-img {
+    width: 277px;
+    height: 430px;
+    background-color: rgb(235, 235, 235);
+    position: absolute;
+    top: calc((619px - 430px)/2);
+    left: calc((365px - 277px)/2);
+    opacity: 0.2;
+}
+
+.border__song {
+    width: 277px;
+    height: 425px;
+    position: absolute;
+    top: calc((619px - 430px)/2);
+    left: calc((365px - 277px)/2);
+    display: flex;
+    flex-direction: column;
+}
+
+.song-thumb-wrap {
+    margin: auto;
+    width: 85%;
+    height: 59%;
+    display: flex;
+    border-radius: 2px;
+    box-shadow: 9px 15px 40px 5px black;
+
+}
+
+.song-thumb {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+
+}
+
+
+.body__song {
+    height: 31%;
+}
+
+.body__song-info {
+    display:flex;
+    flex-direction: row;
+    width:100%;
+}
+
+.body__song-info-names{
+    display:flex;
+    flex-direction: column;
+    color:#fcfff6;
+    margin-left:21px;
+    padding-right: 30px;
+}
+
+.body__song-info-names span:nth-child(2){
+    padding-top:4px;
+    font-size:12px;
+    font-weight: 100;
+}
+
+.body__song-info i{
+    margin-right:-30px;
+    color:white;
+}
+
+.progress-wrap {
+    height:20%;
+    /* background-color:red; */
+    display: flex;
+    width:100%;
+}
+
+.progress-wrap-son{
+    display:block;
+    margin:18px ;
+    width:100%;
+    height:1px;
+    position: relative;
+    
+}
+
+.progress-none{
+    width: 100%;
+    height:1px;
+    background-color:#fcfff6;
+    opacity: 0.65;
+}
+
+.progress-duration{
+    
+    position: absolute;
+    top:0px;
+    left:0;
+    height:2px;
+    width:var(--leight);
+    background-color:#fcfff6;
+}
+
+.body__song-control {
+    display: flex;
+    justify-content: center;
+}
+
+.body__song-control i{
+    padding:15px;
+    font-size:22px;
+    color:#fcfff6;
+}
+.body__song-control i:nth-child(3){
+    font-size:40px;
+    margin-top:-5px;
+}
+.body__song-control i:nth-child(4){
+    font-size:40px;
+    margin-top:-5px;
+}
+
+.none{
+    display:none;
+}
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/fontawesome-free-6.1.2-web/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <div class="wrap-body">
+        <div class="wrap-body-picture "
+            style="background-image: url(https://media-public.canva.com/3ndq0/MAE4Ul3ndq0/1/s.jpg)">
+        </div>
+        <div class="border__song-img">
+
+        </div>
+        <div class="border__song">
+            <div class="song-thumb-wrap">
+                <img class="song-thumb" src="/css/img/1.webp" alt="">
+            </div>
+            <div class="body__song">
+                <div class="body__song-info">
+                    <span class="body__song-info-names">
+                        <span>Where's My Love (Acoustic)</span>
+                        <span>IndieAir</span>
+                    </span>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+                <div class="progress-wrap">
+                    
+                        <input class="progress-wrap-son" type="range" value="0" step="1" min="0" max="100">
+                        <!-- <div class="progress-none"></div>
+                        <div class="progress-duration"></div> -->
+                    
+                </div>
+                <div class="body__song-control">
+                    <i class="fa-solid fa-repeat"></i>
+                    <i class="fa-solid fa-backward-step"></i>
+                    <i class="fa-solid fa-circle-play"></i>
+                    <i class="none fa-solid fa-circle-pause"></i>
+                    <i class="fa-solid fa-forward-step"></i>
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+            </div>
+        </div>
+        <audio class="audio" src="./css/song/1.mp3"></audio>
+
+</body>
+<script>
+    const $ = document.querySelector.bind(document);
+    const $$ = document.querySelectorAll.bind(document);
+    const play_btn = $('.body__song-control i:nth-child(3) ');
+    const pause_btn = $('.body__song-control i:nth-child(4)');
+    const audio = $('.audio');
+    const borderProgress = $('.progress-wrap-son');
+    play_btn.onclick = function () {
+        this.classList.toggle('none');
+        pause_btn.classList.toggle('none');
+        audio.play();
+    }
+    pause_btn.onclick = function () {
+        this.classList.toggle('none');
+        play_btn.classList.toggle('none');
+        audio.pause();
+
+    }
+    // di chuyen thanh progress
+    audio.ontimeupdate = function(e)
+    {
+        let audioPercent = Math.floor(audio.currentTime/audio.duration* 100);
+        borderProgress.value = audioPercent;
+    }
+
+    // click tua thanh progress
+    borderProgress.onchange = function(e)
+    {
+        audio.currentTime = (e.target.value)/100*audio.duration;
+    }
+
+</script>
+
+</html>
