@@ -109,11 +109,12 @@ body {
 .progress-wrap-timeStart,
 .progress-wrap-timeEnd
  {
+     margin-top:5px;
     padding-bottom:100px;
     position: absolute;
     top:100%;
  
-    font-size:10px;
+    font-size:8px;
     font-weight: 100;
     color:#fcfff6;
 }
